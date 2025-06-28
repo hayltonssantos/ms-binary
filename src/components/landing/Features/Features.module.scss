@@ -1,0 +1,161 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.features {
+  padding: $spacing-xxl 0;
+  background: white;
+
+  .container {
+    max-width: $large-desktop;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+
+    @include tablet {
+      padding: 0 $spacing-md;
+    }
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: $spacing-xxl;
+
+    .title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      @include text-gradient-primary;
+      margin-bottom: $spacing-md;
+    }
+
+    .subtitle {
+      font-size: $font-xl;
+      color: $text-secondary;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+
+  .featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: $spacing-xl;
+    margin-bottom: $spacing-xxl;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+
+    .featureCard {
+      @include card-base;
+      text-align: center;
+      border: 1px solid rgba(102, 126, 234, 0.1);
+      transition: all $transition-base;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        @include card-hover;
+        border-color: rgba(102, 126, 234, 0.3);
+
+        .featureIcon {
+          transform: scale(1.1);
+        }
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: $gradient-primary;
+      }
+
+      .featureIcon {
+        font-size: 3rem;
+        margin-bottom: $spacing-lg;
+        display: inline-block;
+        transition: transform $transition-base;
+      }
+
+      .featureTitle {
+        font-size: $font-xl;
+        font-weight: 700;
+        color: $text-primary;
+        margin-bottom: $spacing-md;
+      }
+
+      .featureDescription {
+        color: $text-secondary;
+        line-height: 1.6;
+        font-size: $font-base;
+      }
+    }
+  }
+
+  .ctaSection {
+    .ctaCard {
+      @include card-base;
+      background: $gradient-primary;
+      color: white;
+      text-align: center;
+      border: none;
+
+      .ctaTitle {
+        font-size: $font-2xl;
+        font-weight: 800;
+        margin-bottom: $spacing-md;
+      }
+
+      .ctaDescription {
+        font-size: $font-lg;
+        opacity: 0.9;
+        margin-bottom: $spacing-xl;
+        line-height: 1.6;
+      }
+
+      .ctaButtons {
+        display: flex;
+        gap: $spacing-md;
+        justify-content: center;
+
+        @include mobile {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .ctaBtn {
+          @include button-base;
+          background: white;
+          color: $primary-color;
+          padding: $spacing-md $spacing-xl;
+          font-size: $font-lg;
+          font-weight: 700;
+          text-decoration: none;
+
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: $shadow-lg;
+          }
+        }
+
+        .ctaSecondary {
+          @include button-base;
+          background: transparent;
+          color: white;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          padding: $spacing-md $spacing-xl;
+          font-size: $font-lg;
+          font-weight: 600;
+          text-decoration: none;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+}

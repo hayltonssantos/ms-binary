@@ -1,0 +1,238 @@
+@import '../styles/abstracts/variables';
+@import '../styles/abstracts/mixins';
+
+.dashboard {
+  min-height: 100vh;
+  background: $background-light;
+  padding: $spacing-lg 0;
+
+  .dashboardLoading {
+    @include flex-center;
+    @include flex-column;
+    min-height: 50vh;
+    color: $text-secondary;
+
+    .loadingSpinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(102, 126, 234, 0.3);
+      border-top: 3px solid $primary-color;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: $spacing-md;
+    }
+  }
+
+  .container {
+    max-width: $large-desktop;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+
+    @include tablet {
+      padding: 0 $spacing-md;
+    }
+  }
+
+  .dashboardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-xl;
+    padding: $spacing-lg;
+    background: white;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-sm;
+
+    @include tablet {
+      flex-direction: column;
+      gap: $spacing-lg;
+      text-align: center;
+    }
+
+    .welcomeSection {
+      .welcomeTitle {
+        font-size: $font-3xl;
+        font-weight: 800;
+        @include text-gradient-primary;
+        margin-bottom: $spacing-xs;
+      }
+
+      .welcomeSubtitle {
+        color: $text-secondary;
+        font-size: $font-lg;
+      }
+    }
+
+    .quickActions {
+      display: flex;
+      gap: $spacing-md;
+
+      @include mobile {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .actionBtn {
+        @include button-secondary;
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+        padding: $spacing-sm $spacing-md;
+        font-size: $font-sm;
+
+        .actionIcon {
+          font-size: $font-base;
+        }
+      }
+    }
+  }
+
+  .statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+  }
+
+  .mainContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xl;
+    margin-bottom: $spacing-xl;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+
+    .leftColumn, .rightColumn {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .activitySection {
+    margin-bottom: $spacing-xl;
+
+    .activityCard {
+      @include card-base;
+      background: white;
+      border: 1px solid rgba(102, 126, 234, 0.1);
+
+      .activityTitle {
+        font-size: $font-xl;
+        font-weight: 600;
+        color: $text-primary;
+        margin-bottom: $spacing-lg;
+      }
+
+      .activityList {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+
+        .activityItem {
+          display: flex;
+          align-items: center;
+          gap: $spacing-md;
+          padding: $spacing-md;
+          background: rgba(102, 126, 234, 0.05);
+          border-radius: $radius-md;
+          border-left: 4px solid $primary-color;
+
+          .activityIcon {
+            font-size: $font-xl;
+            background: rgba(102, 126, 234, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: $radius-md;
+            @include flex-center;
+            flex-shrink: 0;
+          }
+
+          .activityContent {
+            flex: 1;
+
+            .activityText {
+              font-size: $font-base;
+              color: $text-primary;
+              margin-bottom: $spacing-xs;
+              font-weight: 500;
+            }
+
+            .activityTime {
+              font-size: $font-sm;
+              color: $text-secondary;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .supportBanner {
+    @include card-base;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+
+    .supportContent {
+      display: flex;
+      align-items: center;
+      gap: $spacing-lg;
+
+      @include tablet {
+        flex-direction: column;
+        text-align: center;
+        gap: $spacing-md;
+      }
+
+      .supportIcon {
+        font-size: 3rem;
+        flex-shrink: 0;
+      }
+
+      .supportText {
+        flex: 1;
+
+        .supportTitle {
+          font-size: $font-xl;
+          font-weight: 700;
+          margin-bottom: $spacing-xs;
+        }
+
+        .supportDescription {
+          opacity: 0.9;
+          line-height: 1.5;
+        }
+      }
+
+      .supportActions {
+        .supportBtn {
+          @include button-base;
+          background: white;
+          color: $primary-color;
+          padding: $spacing-md $spacing-lg;
+          text-decoration: none;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: $spacing-sm;
+
+          .whatsappIcon {
+            font-size: $font-lg;
+          }
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: $shadow-md;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

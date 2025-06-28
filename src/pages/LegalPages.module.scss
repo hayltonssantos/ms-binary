@@ -1,0 +1,223 @@
+@import '../styles/abstracts/variables';
+@import '../styles/abstracts/mixins';
+
+.legalPage {
+  min-height: 100vh;
+  background: $background-light;
+  padding: $spacing-xl 0;
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+
+    @include tablet {
+      padding: 0 $spacing-md;
+    }
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: $spacing-xxl;
+    padding: $spacing-xl;
+    background: white;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-sm;
+
+    .title {
+      font-size: $font-4xl;
+      font-weight: 800;
+      @include text-gradient-primary;
+      margin-bottom: $spacing-md;
+    }
+
+    .lastUpdated {
+      color: $text-secondary;
+      font-size: $font-sm;
+      font-style: italic;
+    }
+  }
+
+  .content {
+    background: white;
+    border-radius: $radius-xl;
+    padding: $spacing-xxl;
+    box-shadow: $shadow-sm;
+    line-height: 1.7;
+
+    @include tablet {
+      padding: $spacing-xl;
+    }
+
+    @include mobile {
+      padding: $spacing-lg;
+    }
+
+    .section {
+      margin-bottom: $spacing-xl;
+
+      h2 {
+        font-size: $font-2xl;
+        font-weight: 700;
+        color: $text-primary;
+        margin-bottom: $spacing-lg;
+        padding-bottom: $spacing-sm;
+        border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+      }
+
+      h3 {
+        font-size: $font-xl;
+        font-weight: 600;
+        color: $text-primary;
+        margin: $spacing-lg 0 $spacing-md;
+      }
+
+      p {
+        color: $text-secondary;
+        margin-bottom: $spacing-md;
+      }
+
+      ul {
+        margin: $spacing-md 0;
+        padding-left: $spacing-lg;
+
+        li {
+          color: $text-secondary;
+          margin-bottom: $spacing-sm;
+          position: relative;
+
+          &::marker {
+            color: $primary-color;
+          }
+
+          strong {
+            color: $text-primary;
+          }
+        }
+      }
+    }
+
+    .criticalWarning {
+      background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(192, 57, 43, 0.1) 100%);
+      border: 2px solid $error;
+      border-radius: $radius-lg;
+      padding: $spacing-lg;
+      margin-bottom: $spacing-xl;
+      text-align: center;
+
+      h2 {
+        color: $error;
+        font-size: $font-2xl;
+        margin-bottom: $spacing-md;
+        border: none;
+        padding: 0;
+      }
+
+      p {
+        color: $error;
+        font-weight: 600;
+        font-size: $font-lg;
+        margin: 0;
+      }
+    }
+
+    .warningBox {
+      background: rgba(243, 156, 18, 0.1);
+      border: 1px solid $warning;
+      border-radius: $radius-md;
+      padding: $spacing-lg;
+      margin: $spacing-lg 0;
+
+      h3 {
+        color: $warning;
+        margin-top: 0;
+        margin-bottom: $spacing-md;
+      }
+
+      p, li {
+        color: $text-primary;
+      }
+    }
+
+    .recommendationsBox {
+      background: rgba(39, 174, 96, 0.1);
+      border: 1px solid $success;
+      border-radius: $radius-md;
+      padding: $spacing-lg;
+      margin: $spacing-lg 0;
+
+      h3 {
+        color: $success;
+        margin-top: 0;
+        margin-bottom: $spacing-md;
+      }
+
+      p, li {
+        color: $text-primary;
+      }
+    }
+
+    .contactInfo {
+      background: rgba(102, 126, 234, 0.05);
+      border-radius: $radius-md;
+      padding: $spacing-lg;
+      margin-top: $spacing-lg;
+
+      p {
+        margin-bottom: $spacing-sm;
+        color: $text-primary;
+
+        strong {
+          color: $primary-color;
+        }
+      }
+    }
+
+    .cookieTable {
+      overflow-x: auto;
+      margin: $spacing-lg 0;
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: $radius-md;
+        overflow: hidden;
+        box-shadow: $shadow-sm;
+
+        th {
+          background: $gradient-primary;
+          color: white;
+          padding: $spacing-md;
+          text-align: left;
+          font-weight: 600;
+        }
+
+        td {
+          padding: $spacing-md;
+          border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+          color: $text-secondary;
+
+          &:first-child {
+            font-weight: 600;
+            color: $text-primary;
+          }
+        }
+
+        tr:hover {
+          background: rgba(102, 126, 234, 0.05);
+        }
+      }
+    }
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,185 @@
+// TODO: Implementar Footer.module.scss
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  padding: $spacing-xxl 0 $spacing-lg;
+
+  .container {
+    max-width: $large-desktop;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+
+    @include tablet {
+      padding: 0 $spacing-md;
+    }
+  }
+
+  .footerContent {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: $spacing-xxl;
+    margin-bottom: $spacing-xl;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+
+    .brandSection {
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+        margin-bottom: $spacing-lg;
+
+        .logoIcon {
+          font-size: 2.5rem;
+          background: $gradient-primary;
+          width: 60px;
+          height: 60px;
+          border-radius: $radius-lg;
+          @include flex-center;
+        }
+
+        .logoText {
+          @include flex-column;
+          gap: $spacing-xs;
+
+          .brandName {
+            font-size: $font-xl;
+            font-weight: 700;
+            @include text-gradient-accent;
+          }
+
+          .brandSubtitle {
+            font-size: $font-sm;
+            opacity: 0.8;
+          }
+        }
+      }
+
+      .brandDescription {
+        font-size: $font-base;
+        line-height: 1.6;
+        opacity: 0.9;
+        margin-bottom: $spacing-lg;
+      }
+
+      .socialLinks {
+        display: flex;
+        gap: $spacing-md;
+
+        .socialLink {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: $radius-md;
+          text-decoration: none;
+          transition: all $transition-base;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+          }
+
+          span {
+            font-size: $font-lg;
+          }
+        }
+      }
+    }
+
+    .linksSection {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: $spacing-xl;
+
+      @include mobile {
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing-lg;
+      }
+
+      .linkGroup {
+        .linkTitle {
+          font-size: $font-lg;
+          font-weight: 700;
+          margin-bottom: $spacing-md;
+          color: white;
+        }
+
+        .linkList {
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-sm;
+
+          .link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: $font-sm;
+            transition: color $transition-base;
+
+            &:hover {
+              color: white;
+            }
+          }
+        }
+
+        .contactInfo {
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-sm;
+
+          .contactItem {
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            font-size: $font-sm;
+            color: rgba(255, 255, 255, 0.8);
+
+            .contactIcon {
+              font-size: $font-base;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footerBottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: $spacing-lg;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include tablet {
+      flex-direction: column;
+      gap: $spacing-md;
+      text-align: center;
+    }
+
+    .copyright {
+      p {
+        font-size: $font-sm;
+        opacity: 0.8;
+      }
+    }
+
+    .disclaimer {
+      p {
+        font-size: $font-xs;
+        opacity: 0.7;
+        background: rgba(243, 156, 18, 0.2);
+        padding: $spacing-xs $spacing-sm;
+        border-radius: $radius-sm;
+        border: 1px solid rgba(243, 156, 18, 0.3);
+      }
+    }
+  }
+}

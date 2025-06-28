@@ -1,0 +1,265 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.registerPage {
+  min-height: 100vh;
+  background: $gradient-primary;
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg 0;
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+    width: 100%;
+
+    @include tablet {
+      padding: 0 $spacing-md;
+    }
+  }
+
+  .formWrapper {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: $spacing-xl;
+    align-items: start;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+
+  .formCard {
+    @include card-base;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: $shadow-2xl;
+
+    .header {
+      margin-bottom: $spacing-lg;
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+
+        .logoIcon {
+          font-size: 3rem;
+          background: $gradient-primary;
+          width: 60px;
+          height: 60px;
+          border-radius: $radius-lg;
+          @include flex-center;
+        }
+
+        .logoText {
+          .title {
+            font-size: $font-3xl;
+            font-weight: 800;
+            @include text-gradient-primary;
+            margin-bottom: $spacing-xs;
+          }
+
+          .subtitle {
+            color: $text-secondary;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+
+    .errorAlert {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      background: rgba(231, 76, 60, 0.1);
+      color: $error;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $radius-md;
+      border: 1px solid rgba(231, 76, 60, 0.2);
+      margin-bottom: $spacing-lg;
+      font-size: $font-sm;
+
+      .errorIcon {
+        font-size: $font-base;
+      }
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-lg;
+
+      .inputGroup {
+        .label {
+          display: block;
+          font-weight: 600;
+          color: $text-primary;
+          margin-bottom: $spacing-xs;
+          font-size: $font-sm;
+
+          .optional {
+            color: $text-secondary;
+            font-weight: 400;
+            font-size: $font-xs;
+          }
+        }
+
+        .input {
+          width: 100%;
+          padding: $spacing-sm $spacing-md;
+          border: 2px solid rgba(102, 126, 234, 0.2);
+          border-radius: $radius-md;
+          font-size: $font-base;
+          transition: all $transition-base;
+          background: rgba(255, 255, 255, 0.8);
+
+          &:focus {
+            outline: none;
+            border-color: $primary-color;
+            background: $text-white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+          }
+
+          &::placeholder {
+            color: $text-light;
+          }
+        }
+
+        .passwordWrapper {
+          position: relative;
+
+          .passwordToggle {
+            position: absolute;
+            right: $spacing-sm;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: $font-lg;
+            color: $text-secondary;
+            transition: color $transition-base;
+
+            &:hover {
+              color: $primary-color;
+            }
+          }
+        }
+
+        .promoHint {
+          margin-top: $spacing-xs;
+          font-size: $font-xs;
+          color: $text-secondary;
+          display: flex;
+          align-items: center;
+          gap: $spacing-xs;
+        }
+      }
+
+      .submitBtn {
+        @include button-primary;
+        width: 100%;
+        padding: $spacing-md;
+        font-size: $font-lg;
+        font-weight: 700;
+        margin-top: $spacing-md;
+
+        .loadingContent {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: $spacing-sm;
+
+          .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          }
+        }
+
+        .btnContent {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: $spacing-sm;
+
+          .btnIcon {
+            font-size: $font-xl;
+          }
+        }
+
+        &:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+          transform: none !important;
+        }
+      }
+    }
+
+    .footer {
+      margin-top: $spacing-lg;
+      text-align: center;
+      padding-top: $spacing-lg;
+      border-top: 1px solid rgba(102, 126, 234, 0.1);
+
+      .loginLink {
+        color: $text-secondary;
+        font-size: $font-sm;
+
+        .link {
+          color: $primary-color;
+          font-weight: 600;
+          text-decoration: none;
+          transition: color $transition-base;
+
+          &:hover {
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .benefitsCard {
+    @include card-base;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: $text-white;
+
+    .benefitsTitle {
+      font-size: $font-lg;
+      font-weight: 700;
+      margin-bottom: $spacing-md;
+      text-align: center;
+    }
+
+    .benefitsList {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-sm;
+
+      .benefit {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        font-size: $font-sm;
+
+        .benefitIcon {
+          font-size: $font-base;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

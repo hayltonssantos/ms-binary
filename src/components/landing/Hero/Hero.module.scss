@@ -1,0 +1,392 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.hero {
+  background: $gradient-primary;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  .container {
+    max-width: $large-desktop;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+    position: relative;
+    z-index: 2;
+
+    @include tablet {
+      padding: 0 $spacing-md;
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xxl;
+    align-items: center;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: $spacing-xl;
+    }
+  }
+
+  .textContent {
+    color: $text-white;
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: $spacing-xs;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: $spacing-xs $spacing-md;
+      border-radius: $radius-full;
+      font-size: $font-sm;
+      font-weight: 600;
+      margin-bottom: $spacing-lg;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+
+      .badgeIcon {
+        font-size: $font-base;
+      }
+    }
+
+    .title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: $spacing-lg;
+
+      .highlight {
+        @include text-gradient-accent;
+      }
+    }
+
+    .subtitle {
+      font-size: $font-xl;
+      line-height: 1.6;
+      margin-bottom: $spacing-lg;
+      opacity: 0.9;
+      max-width: 500px;
+
+      @include tablet {
+        max-width: none;
+      }
+    }
+
+    .features {
+      display: flex;
+      gap: $spacing-lg;
+      margin-bottom: $spacing-xl;
+
+      @include mobile {
+        flex-direction: column;
+        gap: $spacing-md;
+      }
+
+      .feature {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+        font-size: $font-base;
+        font-weight: 500;
+
+        .featureIcon {
+          font-size: $font-xl;
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      gap: $spacing-md;
+      margin-bottom: $spacing-xl;
+
+      @include mobile {
+        flex-direction: column;
+      }
+
+      .primaryBtn {
+        @include button-base;
+        background: $text-white;
+        color: $primary-color;
+        padding: $spacing-md $spacing-lg;
+        font-size: $font-lg;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+
+        .btnIcon {
+          font-size: $font-xl;
+        }
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+      }
+
+      .secondaryBtn {
+        @include button-base;
+        background: transparent;
+        color: $text-white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        padding: $spacing-md $spacing-lg;
+        font-size: $font-lg;
+        font-weight: 600;
+        text-decoration: none;
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+
+        .downloadIcon {
+          font-size: $font-xl;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.5);
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    .trust {
+      .stats {
+        display: flex;
+        gap: $spacing-xl;
+
+        @include mobile {
+          justify-content: center;
+          gap: $spacing-lg;
+        }
+
+        .stat {
+          text-align: center;
+
+          .statNumber {
+            display: block;
+            font-size: $font-3xl;
+            font-weight: 800;
+            @include text-gradient-accent;
+            margin-bottom: $spacing-xs;
+          }
+
+          .statLabel {
+            font-size: $font-sm;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+
+  .imageContent {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .phoneContainer {
+      position: relative;
+      transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);
+      transition: all $transition-base;
+
+      &:hover {
+        transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+      }
+
+      .phone {
+        width: 280px;
+        height: 560px;
+        background: #1a1a1a;
+        border-radius: 30px;
+        padding: 20px;
+        box-shadow: $shadow-2xl;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60px;
+          height: 4px;
+          background: #333;
+          border-radius: 2px;
+        }
+
+        .screen {
+          width: 100%;
+          height: 100%;
+          background: $gradient-primary;
+          border-radius: 20px;
+          padding: 20px;
+          overflow: hidden;
+
+          .appInterface {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .appHeader {
+              @include flex-between;
+              margin-bottom: 20px;
+              color: $text-white;
+
+              .appLogo {
+                font-weight: 700;
+                font-size: $font-lg;
+              }
+
+              .status {
+                display: flex;
+                align-items: center;
+                gap: $spacing-xs;
+                font-size: $font-sm;
+                background: rgba(255, 255, 255, 0.2);
+                padding: 4px 8px;
+                border-radius: 10px;
+
+                .statusDot {
+                  width: 8px;
+                  height: 8px;
+                  background: #4ade80;
+                  border-radius: 50%;
+                  animation: pulse 2s infinite;
+                }
+              }
+            }
+
+            .chart {
+              height: 120px;
+              background: rgba(255, 255, 255, 0.1);
+              border-radius: 10px;
+              margin-bottom: 20px;
+              position: relative;
+              overflow: hidden;
+
+              .chartLine {
+                position: absolute;
+                bottom: 20px;
+                left: 10px;
+                right: 10px;
+                height: 2px;
+                background: $gradient-accent;
+                border-radius: 1px;
+              }
+
+              .chartGlow {
+                position: absolute;
+                bottom: 20px;
+                left: 20%;
+                width: 60%;
+                height: 40px;
+                background: linear-gradient(180deg, rgba(240, 147, 251, 0.3) 0%, transparent 100%);
+                border-radius: 20px 20px 0 0;
+              }
+            }
+
+            .signals {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              gap: $spacing-xs;
+
+              .signal {
+                @include flex-between;
+                background: rgba(255, 255, 255, 0.1);
+                padding: 12px;
+                border-radius: 8px;
+                color: $text-white;
+                font-size: $font-sm;
+
+                .pair {
+                  font-weight: 600;
+                }
+
+                .action {
+                  font-size: $font-xs;
+                }
+
+                .profit {
+                  color: #4ade80;
+                  font-weight: 700;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .floatingCard {
+        position: absolute;
+        top: 20%;
+        right: -60px;
+        background: $text-white;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: $shadow-lg;
+        @include float;
+
+        @include tablet {
+          right: -40px;
+          top: 10%;
+        }
+
+        .cardContent {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+
+          .cardIcon {
+            font-size: $font-2xl;
+          }
+
+          .cardInfo {
+            .cardTitle {
+              font-size: $font-xs;
+              color: $text-secondary;
+              margin-bottom: 2px;
+            }
+
+            .cardValue {
+              font-size: $font-xl;
+              font-weight: 700;
+              color: $success;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

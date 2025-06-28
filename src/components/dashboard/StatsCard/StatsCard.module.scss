@@ -1,0 +1,90 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.statsCard {
+  @include card-base;
+  background: white;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all $transition-base;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    @include card-hover;
+    border-color: rgba(102, 126, 234, 0.3);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $primary-color 0%, $secondary-color 100%);
+  }
+
+  .cardHeader {
+    @include flex-between;
+    margin-bottom: $spacing-md;
+
+    .iconContainer {
+      width: 50px;
+      height: 50px;
+      border-radius: $radius-lg;
+      @include flex-center;
+
+      .icon {
+        font-size: $font-2xl;
+      }
+    }
+
+    .trend {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+      font-size: $font-sm;
+      font-weight: 600;
+
+      .trendIcon {
+        font-size: $font-base;
+      }
+
+      .trendValue {
+        font-size: $font-xs;
+      }
+    }
+  }
+
+  .cardContent {
+    margin-bottom: $spacing-md;
+
+    .title {
+      font-size: $font-sm;
+      color: $text-secondary;
+      margin-bottom: $spacing-xs;
+      font-weight: 500;
+    }
+
+    .value {
+      font-size: $font-2xl;
+      font-weight: 800;
+      line-height: 1;
+    }
+  }
+
+  .cardFooter {
+    .progressBar {
+      height: 4px;
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: $radius-sm;
+      overflow: hidden;
+
+      .progress {
+        height: 100%;
+        border-radius: $radius-sm;
+        transition: width $transition-slow;
+      }
+    }
+  }
+}

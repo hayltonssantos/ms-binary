@@ -1,0 +1,527 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.vipStatus {
+  .loading {
+    @include flex-center;
+    @include flex-column;
+    padding: $spacing-xl;
+    color: $text-secondary;
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(102, 126, 234, 0.3);
+      border-top: 3px solid $primary-color;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: $spacing-md;
+    }
+  }
+
+  .statusCard {
+    @include card-base;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+
+    .header {
+      margin-bottom: $spacing-lg;
+
+      .titleSection {
+        @include flex-between;
+        align-items: flex-start;
+
+        @include mobile {
+          flex-direction: column;
+          gap: $spacing-md;
+        }
+
+        .title {
+          font-size: $font-2xl;
+          font-weight: 700;
+          @include text-gradient-primary;
+        }
+
+        .badge {
+          display: flex;
+          align-items: center;
+          gap: $spacing-xs;
+          padding: $spacing-xs $spacing-md;
+          border-radius: $radius-full;
+          font-size: $font-sm;
+          font-weight: 600;
+
+          &.normal {
+            background: rgba(39, 174, 96, 0.1);
+            color: $success;
+            border: 1px solid rgba(39, 174, 96, 0.3);
+          }
+
+          &.warning {
+            background: rgba(243, 156, 18, 0.1);
+            color: $warning;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+          }
+
+          &.urgent {
+            background: rgba(231, 76, 60, 0.1);
+            color: $error;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+          }
+
+          &.critical, &.expired {
+            background: rgba(231, 76, 60, 0.2);
+            color: $error;
+            border: 1px solid rgba(231, 76, 60, 0.5);
+            animation: pulse 2s infinite;
+          }
+
+          .badgeIcon {
+            font-size: $font-base;
+          }
+        }
+      }
+    }
+
+    .planInfo {
+      background: rgba(102, 126, 234, 0.05);
+      border-radius: $radius-lg;
+      padding: $spacing-lg;
+      margin-bottom: $spacing-lg;
+
+      .planHeader {
+        margin-bottom: $spacing-md;
+
+        .planName {
+          display: flex;
+          align-items: center;
+          gap: $spacing-md;
+
+          .planIcon {
+            font-size: 2rem;
+            background: $gradient-primary;
+            width: 50px;
+            height: 50px;
+            border-radius: $radius-lg;
+            @include flex-center;
+          }
+
+          .planDetails {
+            @include flex-column;
+            gap: $spacing-xs;
+
+            .name {
+              font-size: $font-xl;
+              font-weight: 700;
+              color: $text-primary;
+            }
+
+            .key {
+              font-size: $font-sm;
+              color: $text-secondary;
+              font-family: $font-mono;
+            }
+          }
+        }
+      }
+
+      .timeInfo {
+        .timeRemaining {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: $spacing-lg;
+          align-items: center;
+          margin-bottom: $spacing-md;
+
+          @include mobile {
+            grid-template-columns: 1fr;
+            gap: $spacing-md;
+          }
+
+          .daysContainer {
+            text-align: center;
+
+            .daysNumber {
+              display: block;
+              font-size: 3rem;
+              font-weight: 800;
+              @include text-gradient-accent;
+              line-height: 1;
+            }
+
+            .daysLabel {
+              font-size: $font-sm;
+              color: $text-secondary;
+              font-weight: 500;
+            }
+          }
+
+          .expiryDate {
+            @include flex-column;
+            gap: $spacing-xs;
+
+            .expiryLabel {
+              font-size: $font-sm;
+              color: $text-secondary;
+            }
+
+            .expiryValue {
+              font-size: $font-base;
+              font-weight: 600;
+              color: $text-primary;
+              font-family: $font-mono;
+            }
+          }
+        }
+
+        .progressContainer {
+          display: flex;
+          align-items: center;
+          gap: $spacing-md;
+
+          .progressBar {
+            flex: 1;
+            height: 8px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: $radius-sm;
+            overflow: hidden;
+
+            .progress {
+              height: 100%;
+              border-radius: $radius-sm;
+              transition: all $transition-base;
+            }
+          }
+
+          .progressText {
+            font-size: $font-sm;
+            font-weight: 600;
+            color: $text-secondary;
+            min-width: 40px;
+          }
+        }
+      }
+    }
+
+    .features {
+      margin-bottom: $spacing-lg;
+
+      .featuresTitle {
+        font-size: $font-lg;
+        font-weight: 600;
+        color: $text-primary;
+        margin-bottom: $spacing-md;
+      }
+
+      .featureGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: $spacing-sm;
+
+        .feature {
+          display: flex;
+          align-items: center;
+          gap: $spacing-sm;
+          padding: $spacing-sm;
+          background: rgba(39, 174, 96, 0.1);
+          border-radius: $radius-md;
+          border: 1px solid rgba(39, 174, 96, 0.2);
+
+          .featureIcon {
+            font-size: $font-base;
+          }
+
+          .featureName {
+            font-size: $font-sm;
+            font-weight: 500;
+            color: $text-primary;
+          }
+        }
+      }
+    }
+
+    .downloadInfo {
+      margin-bottom: $spacing-lg;
+
+      .downloadStatus {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+        padding: $spacing-md;
+        background: rgba(52, 152, 219, 0.1);
+        border-radius: $radius-md;
+        border: 1px solid rgba(52, 152, 219, 0.2);
+
+        .downloadIcon {
+          font-size: $font-2xl;
+        }
+
+        .downloadDetails {
+          @include flex-column;
+          gap: $spacing-xs;
+
+          .downloadLabel {
+            font-size: $font-sm;
+            color: $text-secondary;
+          }
+
+          .downloadCount {
+            font-size: $font-lg;
+            font-weight: 700;
+            color: $info;
+          }
+        }
+      }
+    }
+
+    .upgradeSection {
+      margin-bottom: $spacing-lg;
+      padding: $spacing-lg;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+      border-radius: $radius-lg;
+      border: 1px solid rgba(102, 126, 234, 0.2);
+
+      .upgradeHeader {
+        text-align: center;
+        margin-bottom: $spacing-lg;
+
+        .upgradeTitle {
+          font-size: $font-xl;
+          font-weight: 700;
+          @include text-gradient-primary;
+          margin-bottom: $spacing-sm;
+        }
+
+        .upgradeSubtitle {
+          color: $text-secondary;
+          line-height: 1.5;
+        }
+      }
+
+      .upgradeOptions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: $spacing-lg;
+
+        .upgradeOption {
+          @include card-base;
+          padding: $spacing-lg;
+          border: 2px solid rgba(102, 126, 234, 0.2);
+          position: relative;
+          transition: all $transition-base;
+
+          &:hover {
+            transform: translateY(-4px);
+            box-shadow: $shadow-lg;
+          }
+
+          &.popular {
+            border-color: $accent-color;
+            transform: scale(1.05);
+
+            .popularBadge {
+              position: absolute;
+              top: -10px;
+              left: 50%;
+              transform: translateX(-50%);
+              background: $gradient-accent;
+              color: white;
+              padding: $spacing-xs $spacing-md;
+              border-radius: $radius-full;
+              font-size: $font-xs;
+              font-weight: 700;
+            }
+          }
+
+          .optionHeader {
+            text-align: center;
+            margin-bottom: $spacing-md;
+
+            .optionName {
+              display: block;
+              font-size: $font-lg;
+              font-weight: 700;
+              color: $text-primary;
+              margin-bottom: $spacing-xs;
+            }
+
+            .priceContainer {
+              @include flex-column;
+              gap: $spacing-xs;
+
+              .oldPrice {
+                font-size: $font-sm;
+                color: $text-light;
+                text-decoration: line-through;
+              }
+            }
+
+            .optionPrice {
+              font-size: $font-2xl;
+              font-weight: 800;
+              @include text-gradient-accent;
+            }
+          }
+
+          .optionFeatures {
+            margin-bottom: $spacing-lg;
+
+            li {
+              display: flex;
+              align-items: center;
+              gap: $spacing-sm;
+              margin-bottom: $spacing-sm;
+              font-size: $font-sm;
+              color: $text-primary;
+            }
+          }
+
+          .upgradeBtn {
+            @include button-secondary;
+            width: 100%;
+            padding: $spacing-md;
+            font-weight: 700;
+
+            &.primary {
+              @include button-primary;
+            }
+          }
+        }
+      }
+    }
+
+    .promoSection {
+      .promoHeader {
+        @include flex-between;
+        margin-bottom: $spacing-md;
+
+        .promoTitle {
+          font-size: $font-lg;
+          font-weight: 600;
+          color: $text-primary;
+        }
+
+        .promoToggle {
+          @include button-secondary;
+          padding: $spacing-xs $spacing-md;
+          font-size: $font-sm;
+        }
+      }
+
+      .promoForm {
+        .form {
+          margin-bottom: $spacing-md;
+
+          .inputGroup {
+            display: flex;
+            gap: $spacing-sm;
+
+            @include mobile {
+              flex-direction: column;
+            }
+
+            .promoInput {
+              flex: 1;
+              padding: $spacing-sm $spacing-md;
+              border: 2px solid rgba(102, 126, 234, 0.2);
+              border-radius: $radius-md;
+              font-size: $font-base;
+              font-family: $font-mono;
+              text-transform: uppercase;
+
+              &:focus {
+                outline: none;
+                border-color: $primary-color;
+                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+              }
+
+              &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+              }
+            }
+
+            .promoBtn {
+              @include button-primary;
+              padding: $spacing-sm $spacing-lg;
+              white-space: nowrap;
+
+              .loading {
+                display: flex;
+                align-items: center;
+                gap: $spacing-xs;
+
+                .spinner {
+                  width: 16px;
+                  height: 16px;
+                  border: 2px solid transparent;
+                  border-top: 2px solid currentColor;
+                  border-radius: 50%;
+                  animation: spin 1s linear infinite;
+                }
+              }
+
+              &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+                transform: none !important;
+              }
+            }
+          }
+        }
+
+        .cancelBtn {
+          background: none;
+          border: none;
+          color: $text-secondary;
+          font-size: $font-sm;
+          cursor: pointer;
+          transition: color $transition-base;
+
+          &:hover {
+            color: $text-primary;
+          }
+        }
+      }
+
+      .promoMessage {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        padding: $spacing-sm $spacing-md;
+        border-radius: $radius-md;
+        font-size: $font-sm;
+        font-weight: 500;
+        margin-top: $spacing-md;
+
+        &.success {
+          background: rgba(39, 174, 96, 0.1);
+          color: $success;
+          border: 1px solid rgba(39, 174, 96, 0.3);
+        }
+
+        &.error {
+          background: rgba(231, 76, 60, 0.1);
+          color: $error;
+          border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+
+        .messageIcon {
+          font-size: $font-base;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

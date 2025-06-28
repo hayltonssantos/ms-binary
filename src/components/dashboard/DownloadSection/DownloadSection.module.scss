@@ -1,0 +1,357 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.downloadSection {
+  .header {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+
+    .title {
+      font-size: $font-2xl;
+      font-weight: 700;
+      @include text-gradient-primary;
+      margin-bottom: $spacing-sm;
+    }
+
+    .subtitle {
+      color: $text-secondary;
+      font-size: $font-lg;
+      line-height: 1.5;
+    }
+  }
+
+  .warningCard {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    border-radius: $radius-lg;
+    padding: $spacing-lg;
+    margin-bottom: $spacing-xl;
+
+    .warningIcon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .warningContent {
+      .warningTitle {
+        font-size: $font-lg;
+        font-weight: 600;
+        color: $error;
+        margin-bottom: $spacing-xs;
+      }
+
+      .warningText {
+        color: $text-secondary;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  .downloadInfo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+
+    .infoCard {
+      @include card-base;
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+      background: rgba(102, 126, 234, 0.05);
+      border: 1px solid rgba(102, 126, 234, 0.1);
+
+      .infoIcon {
+        font-size: 1.5rem;
+        background: $gradient-primary;
+        width: 40px;
+        height: 40px;
+        border-radius: $radius-md;
+        @include flex-center;
+      }
+
+      .infoContent {
+        .infoTitle {
+          font-size: $font-sm;
+          color: $text-secondary;
+          margin-bottom: $spacing-xs;
+        }
+
+        .infoValue {
+          font-size: $font-base;
+          font-weight: 600;
+          color: $text-primary;
+        }
+      }
+    }
+  }
+
+  .platformsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+
+    .platformCard {
+      @include card-base;
+      border: 1px solid rgba(102, 126, 234, 0.1);
+      transition: all $transition-base;
+
+      &:hover {
+        @include card-hover;
+        border-color: rgba(102, 126, 234, 0.3);
+      }
+
+      .platformHeader {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+        margin-bottom: $spacing-md;
+
+        .platformIcon {
+          font-size: 2rem;
+          background: rgba(102, 126, 234, 0.1);
+          width: 50px;
+          height: 50px;
+          border-radius: $radius-lg;
+          @include flex-center;
+        }
+
+        .platformInfo {
+          .platformName {
+            font-size: $font-lg;
+            font-weight: 600;
+            color: $text-primary;
+            margin-bottom: $spacing-xs;
+          }
+
+          .platformDescription {
+            font-size: $font-sm;
+            color: $text-secondary;
+          }
+        }
+      }
+
+      .platformDetails {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: $spacing-lg;
+
+        .detail {
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-xs;
+
+          .detailLabel {
+            font-size: $font-xs;
+            color: $text-secondary;
+            text-transform: uppercase;
+            font-weight: 600;
+          }
+
+          .detailValue {
+            font-size: $font-sm;
+            font-weight: 600;
+            color: $text-primary;
+          }
+        }
+      }
+
+      .downloadBtn {
+        @include button-primary;
+        width: 100%;
+        padding: $spacing-md;
+        font-weight: 600;
+
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          transform: none !important;
+        }
+
+        .downloadingContent {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: $spacing-sm;
+
+          .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          }
+        }
+
+        .downloadContent {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: $spacing-sm;
+
+          .downloadIcon {
+            font-size: $font-lg;
+          }
+        }
+      }
+    }
+  }
+
+  .instructions {
+    @include card-base;
+    background: rgba(102, 126, 234, 0.05);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    margin-bottom: $spacing-xl;
+
+    .instructionsTitle {
+      font-size: $font-xl;
+      font-weight: 600;
+      color: $text-primary;
+      margin-bottom: $spacing-lg;
+      text-align: center;
+    }
+
+    .instructionsList {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: $spacing-lg;
+
+      .instruction {
+        display: flex;
+        gap: $spacing-md;
+
+        .stepNumber {
+          background: $gradient-primary;
+          color: white;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          @include flex-center;
+          font-weight: 700;
+          font-size: $font-sm;
+          flex-shrink: 0;
+        }
+
+        .stepContent {
+          .stepTitle {
+            font-size: $font-base;
+            font-weight: 600;
+            color: $text-primary;
+            margin-bottom: $spacing-xs;
+          }
+
+          .stepDescription {
+            font-size: $font-sm;
+            color: $text-secondary;
+            line-height: 1.5;
+
+            code {
+              background: rgba(102, 126, 234, 0.1);
+              padding: 2px 6px;
+              border-radius: $radius-sm;
+              font-family: $font-mono;
+              font-size: $font-xs;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .supportSection {
+    .supportCard {
+      @include card-base;
+      background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+      border: 1px solid rgba(39, 174, 96, 0.2);
+      display: flex;
+      align-items: center;
+      gap: $spacing-lg;
+
+      @include tablet {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .supportIcon {
+        font-size: 3rem;
+        flex-shrink: 0;
+      }
+
+      .supportContent {
+        flex: 1;
+
+        .supportTitle {
+          font-size: $font-lg;
+          font-weight: 600;
+          color: $text-primary;
+          margin-bottom: $spacing-xs;
+        }
+
+        .supportText {
+          color: $text-secondary;
+          margin-bottom: $spacing-md;
+          line-height: 1.5;
+        }
+
+        .supportButtons {
+          display: flex;
+          gap: $spacing-md;
+
+          @include mobile {
+            flex-direction: column;
+          }
+
+          .whatsappBtn, .emailBtn {
+            display: flex;
+            align-items: center;
+            gap: $spacing-xs;
+            padding: $spacing-sm $spacing-md;
+            border-radius: $radius-md;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all $transition-base;
+          }
+
+          .whatsappBtn {
+            background: #25d366;
+            color: white;
+
+            &:hover {
+              background: #128c7e;
+              transform: translateY(-2px);
+            }
+
+            .whatsappIcon {
+              font-size: $font-base;
+            }
+          }
+
+          .emailBtn {
+            background: rgba(102, 126, 234, 0.1);
+            color: $primary-color;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+
+            &:hover {
+              background: rgba(102, 126, 234, 0.2);
+              transform: translateY(-2px);
+            }
+
+            .emailIcon {
+              font-size: $font-base;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

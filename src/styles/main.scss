@@ -1,0 +1,51 @@
+// Main stylesheet for MHI Trading Bot
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'base/reset';
+
+// Global styles
+.container {
+  max-width: $large-desktop;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  
+  @include tablet {
+    padding: 0 $spacing-md;
+  }
+  
+  @include mobile {
+    padding: 0 $spacing-sm;
+  }
+}
+
+// Utility classes
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
+
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+
+.hidden { display: none; }
+.sr-only { @include visually-hidden; }
+
+// Loading animation
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
